@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+    <meta http-equiv="cleartype" content="on"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>
+        ui searchbox_component
+    </title>
+
+    <link rel="shortcut icon" href="http://static.mlstatic.com/org-img/ui/ml/favicon/favicon-1.0.0.ico"/>
+
+    <script src="mobile-detect.js"></script>
+    <script>
+        var md = new MobileDetect(window.navigator.userAgent);
+        if (md.mobile()) {
+            document.write('<link rel="stylesheet" href="http://ui.mlstatic.com/chico/2.0.1/mobile/chico.min.css">');
+            document.write('<link rel="stylesheet" href="dist/main__small.css">');
+        } else {
+            document.write('<link rel="stylesheet" href="http://ui.mlstatic.com/chico/2.0.1/ui/chico.min.css">');
+            document.write('<link rel="stylesheet" href="dist/main__large.css">');
+        }
+    </script>
+
+
+    <!-- Demo specific styles -->
+    <style>
+        .ch-box.demo {
+            width: 60%;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+
+            -webkit-transform: translate3d(-50%, -50%, 0);
+            transform: translate3d(-50%, -50%, 0);
+        }
+
+        .nav-search-input {
+            box-sizing: border-box;
+            width: 100%;
+        }
+        .ch-autocomplete-wrapper {
+            width: 100%;
+        }
+    </style>
+    <!-- End specific styles -->
+</head>
+
+<body>
+
+    <div class="ch-box demo">
+        <p>
+            <input tabindex="1" type="text" class="nav-search-input"
+                  name="as_word" max-length="120" placeholder="Ingresa colonia o delegación"/>
+        </p>
+        <!--
+        <p>
+            <input tabindex="2" type="text" class="nav-search-input2"
+                   name="as_word" max-length="120" placeholder="Ingresa colonia o delegación"/>
+        </p>
+        -->
+    </div>
+
+
+    <!--
+    <script>
+        var md = new MobileDetect(window.navigator.userAgent);
+        if (md.mobile()) {
+            document.write('<script src="http://static.mlstatic.com/org-img/ch/vendor/jquery/jquery-1.10.2.min.js"></'+'script>');
+            document.write('<script src="http://static.mlstatic.com/org-img/ch/mobile/1.1.1/chico.min.js"></'+'script>');
+        } else {
+            document.write('<script src="http://static.mlstatic.com/org-img/ch/vendor/jquery/jquery-1.10.2.min.js"></'+'script>');
+            document.write('<script src="http://static.mlstatic.com/org-img/ch/ui/1.1.1/chico.min.js"></'+'script>');
+        }
+    </script>
+    -->
+
+    <script src="node_modules/tiny.js/dist/tiny.min.js"></script>
+    <script src="dist/main.js"></script>
+
+</body>
+</html>
