@@ -672,8 +672,6 @@ class Autocomplete extends Component {
             let key = e.which || e.keyCode;
             let value;
 
-            e.preventDefault();
-
             switch (key) {
                 case KEYS.ENTER:
                     that._selectSuggestion();
@@ -723,6 +721,18 @@ class Autocomplete extends Component {
                         that.trigger.value = parts[0].trim();
                     }
                     break;
+            }
+
+            if ([KEYS.ENTER, KEYS.DOWN, KEYS.UP].indexOf(key) > -1) {
+                e.preventDefault();
+            }
+        });
+
+        tiny.on(this.trigger, 'keydown', e => {
+            let key = e.which || e.keyCode;
+
+            if (key === KEYS.BACKSPACE && this.trigger.value.length === 0) {
+                this.clear();
             }
         });
 
