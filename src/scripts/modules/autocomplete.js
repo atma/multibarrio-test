@@ -552,7 +552,12 @@ class Autocomplete extends Component {
         window.clearTimeout(this._stopTyping);
 
         if (this._highlighted === null) {
-            return this;
+            if (this._suggestions.length > 0) {
+                this._highlighted = 0;
+                this._toogleHighlighted();
+            } else {
+                return this;
+            }
         }
 
         if (!this._options.html) {
