@@ -876,14 +876,25 @@ class Autocomplete extends Component {
 
         // hides the suggestions list
         if (suggestionsLength === 0) {
-            this._popover.hide();
+            const shouldBeHidden = this._filters.length === 0 || this.trigger.value.length < 3;
+            shouldBeHidden && this._popover.hide();
 
             setTimeout(() => {
                 // Reset suggestions collection.
                 this._suggestions = [];
                 this._suggestionsList.innerHTML = '';
                 that._highlighted = null;
+
+                if (this._filters.length > 0) {
+                    let locality = this._filters.map(f => f.name).join(', ');
+                    this._suggestionsList.innerHTML = `<li class="ch-autocomplete-item--not-found">No encontramos lo que buscas dentro de <strong>${locality}</strong></li>`;
+                }
             }, 50);
+
+            // Show the not found message
+            if (!shouldBeHidden && !this._popover.isShown() && window.document.activeElement === this.trigger) {
+                this._popover.show();
+            }
 
             return this;
         }

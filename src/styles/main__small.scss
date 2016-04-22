@@ -66,8 +66,17 @@ body {
         }
     }
 
-    &-item {
+    &-item,
+    &-item--not-found {
         padding: 3px 16px 4px;
+    }
+
+    &-item--not-found {
+        font-weight: 300;
+
+        & > strong {
+            font-weight: 400;
+        }
     }
 
     &-filter,
