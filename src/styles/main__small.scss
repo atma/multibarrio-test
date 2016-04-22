@@ -18,7 +18,7 @@ body {
 .ch-autocomplete {
     &-multiple {
         border: 0; //1px solid #999
-        padding: 10px 16px;
+        padding: 10px 0;
         overflow: visible;
         margin: 0;
         background-color: #fff;
@@ -29,8 +29,14 @@ body {
 
         .ch-popover {
             position: relative !important;
-            top: 10px !important;
+            //top: 10px !important;
         }
+    }
+
+    &-choices {
+        padding: 0 12px 11px;
+        background-color: #fff;
+        border-radius: 0 0 4px 4px;
     }
 
     &-choices,
@@ -50,7 +56,7 @@ body {
         background-color: rgba(0, 0, 0, .45);
         border-radius: 0 0 5px 5px;
         padding: 0 15px 12px;
-        margin: 23px -16px 0;
+        margin: 11px 0 0;
     }
 
     &-choices--empty {
@@ -58,6 +64,10 @@ body {
         .ch-autocomplete-search-input {
             width: 100%;
         }
+    }
+
+    &-item {
+        padding: 3px 16px 4px;
     }
 
     &-filter,

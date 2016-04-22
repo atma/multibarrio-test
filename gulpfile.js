@@ -99,7 +99,7 @@ gulp.task('rev', function() {
         .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('serve', ['default'], function() {
+gulp.task('serve', ['build'], function() {
     browserSync({
         notify: false,
         port: 9000,
@@ -117,9 +117,7 @@ gulp.task('serve', ['default'], function() {
     gulp.watch('src/scripts/**/*.js', ['js:build']);
 });
 
-gulp.task('build', ['styles:build', 'js:build'], function() {
-    gulp.start('dist');
-});
+gulp.task('build', ['styles:build', 'js:build']);
 
 gulp.task('dist', function(done) {
     $.runSequence(['styles:dist', 'js:dist'], 'rev', 'html:dist', done);

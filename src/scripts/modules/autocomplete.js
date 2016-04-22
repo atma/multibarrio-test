@@ -345,15 +345,18 @@ class Autocomplete extends Component {
     }
 
     clear() {
+        if (this._value.length == 0 || !this._options.multiple) {
+            this.clearFilters();
+            tiny.addClass(this._choicesList, this.getClassname(this._options.choicesClass+ '--empty'));
+        }
+
         if (this._options.multiple) {
             this._value = [];
             this._clearChoices();
-            tiny.addClass(this._choicesList, this.getClassname(this._options.choicesClass+ '--empty'));
             this._searchInput.style.width = '';
         } else {
             this._value = '';
         }
-        this.clearFilters();
 
         return this;
     }
@@ -380,7 +383,7 @@ class Autocomplete extends Component {
                     if (summary) {
                         const a = summary.querySelector('a');
                         if (!a.getAttribute('data-opened')) {
-                            a.innerText = `${this._value.length} colonias`;
+                            a.innerText = `+ ${this._value.length} colonias`;
                         }
                     }
                 }
@@ -565,7 +568,7 @@ class Autocomplete extends Component {
                     this._clearChoices();
 
                     const summary = this._choicesList.querySelector('.ch-autocomplete-choices-summary');
-                    const text = `${this._value.length} colonias`;
+                    const text = `+ ${this._value.length} colonias`;
                     if (summary) {
                         summary.querySelector('a').innerText = text;
                     } else {
@@ -580,7 +583,7 @@ class Autocomplete extends Component {
                             const a = e.target;
                             if (a.getAttribute('data-opened')) {
                                 a.removeAttribute('data-opened');
-                                a.innerText = `${this._value.length} colonias`;
+                                a.innerText = `+ ${this._value.length} colonias`;
                                 const list = this._wrapper.querySelector('.ch-autocomplete-choices-all');
                                 list.parentNode.removeChild(list);
                             } else {
