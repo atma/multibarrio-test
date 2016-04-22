@@ -3,6 +3,5 @@ node_modules
 .DS_Store
 .publish
 .idea/
-.dist-demo/
-.dist/
-.build/
+dist/
+build/

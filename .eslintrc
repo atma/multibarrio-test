@@ -1,4 +1,3 @@
-
 {
   "extends": "eslint:recommended",
   "env": {
@@ -17,5 +16,9 @@
     "restParams": true,
     "spread": true,
     "destructuring": true
+  },
+  "globals": {
+    "tiny": false,
+    "autocomplete": true
   }
 }

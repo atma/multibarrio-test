@@ -43,7 +43,7 @@
     <link href="http://resources.mlstatic.com/frontend/classifieds-homes-premium/styles/home_MT__desktop.b7dd8796.css" rel="stylesheet" type="text/css" />
 
 
-    <link rel="stylesheet" href="dist/main__large.min.css">
+    <link rel="stylesheet" href="build/main__large.css">
 
     <!--[if lte IE 9]>
     <link href="http://resources.mlstatic.com/frontend/classifieds-homes-premium/styles/home_MT__ie9.2fee93d0.css" rel="stylesheet" type="text/css" />
@@ -2938,13 +2938,6 @@
         function(d){var a;b.URL&&"function"===typeof b.URL?(d=new URL(d),d=d.hostname):(a=g.createElement("a"),a.href=d,d=a.hostname);return d};var m=new d;m.registerEvents();f.utils=m})(this,this.document,Meli.prototype);
 </script>
 
-
-
-
-
-
-
-
 <script type="text/javascript">
     window.meliAsync = function () {
         meli.init({
@@ -2955,18 +2948,6 @@
         meli.iframeModal && meli.iframeModal.init();
     };
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script type="text/javascript">
 
@@ -2980,7 +2961,7 @@
         }, function() {
             meli.bmarks.init();
         }, "//resources.mlstatic.com/frontend/classifieds-homes-premium/assets/bundles/MT-MLM-dd16b2a0e1126775aa2ac5ef8c8ed07f.js",
-            'dist/main.min.js',
+            'build/main.js',
             function() {
             var newsItems = Array.prototype.slice.call(document.querySelectorAll('.news__item-heading, .news__item-summary')),
                 resizeChecker;
