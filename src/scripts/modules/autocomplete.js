@@ -35,7 +35,8 @@ const KEYS = {
     LEFT: 37,
     UP: 38,
     RIGHT: 39,
-    DOWN: 40
+    DOWN: 40,
+    COMMA: 188
     /*
     '8': 'backspace',
     '9': 'tab',
@@ -699,7 +700,7 @@ class Autocomplete extends Component {
                     break;
                 case KEYS.DOWN:
                     // change the selected value & stores the future HTMLInputElement value
-                    if (that._highlighted >= that._suggestionsQuantity - 1) {
+                    if (that._highlighted >= that._suggestionsQuantity) {
                         that._highlighted = null;
                         value = that._currentQuery;
                     } else {
@@ -737,6 +738,24 @@ class Autocomplete extends Component {
                         const parts = value.split(',');
                         that.trigger.value = parts[0].trim();
                     }
+                    break;
+                case KEYS.COMMA:
+                    const val = that.trigger.value.split(',')[0].toLowerCase().trim();
+                    let position = that._suggestions.findIndex(s => {
+                        return s.toLowerCase().indexOf(`${val},`) === 0;
+                    });
+
+                    if (position === -1) {
+                        position = that._suggestions.findIndex(s => {
+                            return s.toLowerCase().indexOf(`${val}`) !== -1;
+                        });
+                    }
+
+                    if (position !== -1) {
+                        that._highlighted = position;
+                        that._selectSuggestion();
+                    }
+
                     break;
             }
 
