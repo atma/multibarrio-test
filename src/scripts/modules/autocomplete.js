@@ -203,8 +203,10 @@ class Autocomplete extends Component {
             this._popover._options.reference = this._choicesList;
             this._popover._positioner.refresh({reference: this._choicesList});
 
-            tiny.on(this._searchInput, 'keydown', (e) => {
-                this._fixInputWidth();
+            tiny.on(this._searchInput, 'keyup', (e) => {
+                setTimeout(() => {
+                    this._fixInputWidth();
+                }, 1);
             });
         }
 
@@ -348,6 +350,7 @@ class Autocomplete extends Component {
         if (this._value.length == 0 || !this._options.multiple) {
             this.clearFilters();
             tiny.addClass(this._choicesList, this.getClassname(this._options.choicesClass+ '--empty'));
+            this._fixInputWidth();
         }
 
         if (this._options.multiple) {
@@ -370,7 +373,8 @@ class Autocomplete extends Component {
                 const summary = this._choicesList.querySelector('.ch-autocomplete-choices-summary');
 
                 if (this._value.length === 0) {
-                    this.clearFilters();
+                    // TODO: Confirm that filters are not cleaning here
+                    //this.clearFilters();
                     const all = this._wrapper.querySelector('.ch-autocomplete-choices-all');
                     if (all) {
                         all.parentNode.removeChild(all);
@@ -419,7 +423,12 @@ class Autocomplete extends Component {
     }
 
     _fixInputWidth() {
-        this._searchInput.style.width = `${(this._searchInput.value.length + 2) * .55}em`;
+        // TODO: Move placeholder handling to a separate function
+        const empty = this._searchInput.value.length === 0 && this._filters.length === 0;
+        const width = empty ? '' : `${(this._searchInput.value.length + 2) * .55}em`;
+
+        this._searchInput.style.width = width;
+        this._searchInput.setAttribute('placeholder', empty ? this._el.getAttribute('placeholder') : '');
     }
 
     _showAllChoices() {
