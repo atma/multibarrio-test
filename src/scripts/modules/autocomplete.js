@@ -427,7 +427,7 @@ class Autocomplete extends Component {
         // TODO: Move placeholder handling to a separate function
         const empty = this._searchInput.value.length === 0 && this._filters.length === 0;
         const width = empty ? '' : `${(this._searchInput.value.length + 2) * .55}em`;
-        const placeholder = empty ? this._el.getAttribute('placeholder') : this._value.length ? 'Agrega otra colonia' : '';
+        const placeholder = this._filters.length === 0 ? this._el.getAttribute('placeholder') : this._value.length ? 'Agrega otra colonia' : 'Agrega una colonia';
 
         this._searchInput.style.width = width;
         this._searchInput.setAttribute('placeholder', placeholder);

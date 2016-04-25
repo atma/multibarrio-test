@@ -872,5 +872,6 @@ tiny.on('.nav-search', 'submit', e => {
 
 tiny.on('.nav-search-submit', 'click', e => {
     e.preventDefault();
+    //window.location = 'http://inmuebles.metroscubicos.com/distrito-federal/';
     //setTimeout(() => {window.location.reload(true)}, 1000);
 });
