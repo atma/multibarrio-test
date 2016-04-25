@@ -130,27 +130,10 @@ body {
         margin: 0;
         box-sizing: border-box;
         width: 2em;
+        min-width: 9em;
 
         .ch-autocomplete-choices--empty & {
             width: 100%;
-        }
-    }
-
-    &-search-input::-moz-placeholder {
-        opacity: 0;
-    }
-
-    &-search-input::-webkit-input-placeholder {
-        opacity: 0;
-    }
-
-    &-choices--empty {
-        .ch-autocomplete-search-input::-moz-placeholder {
-            opacity: 1;
-        }
-
-        .ch-autocomplete-search-input::-webkit-input-placeholder {
-            opacity: 1;
         }
     }
 
